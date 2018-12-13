@@ -33,16 +33,16 @@ class ControllerTest extends FunSuite with MockFactory {
  
     inSequence {
       inAnyOrder {
-        mockTurtle.expects('penUp)()
-        mockTurtle.expects('getPosition)().returning(0.0, 0.0)
-        mockTurtle.expects('getAngle)().returning(0.0)
+        mockTurtle.expects(sym"penUp")()
+        mockTurtle.expects(sym"getPosition")().returning(0.0, 0.0)
+        mockTurtle.expects(sym"getAngle")().returning(0.0)
       }
-      mockTurtle.expects('turn)(~(Pi / 4))
-      mockTurtle.expects('forward)(~sqrt(2.0))
-      mockTurtle.expects('getAngle)().returning(Pi / 4)
-      mockTurtle.expects('turn)(~(-Pi / 4))
-      mockTurtle.expects('penDown)()
-      mockTurtle.expects('forward)(1.0)
+      mockTurtle.expects(sym"turn")(~(Pi / 4))
+      mockTurtle.expects(sym"forward")(~sqrt(2.0))
+      mockTurtle.expects(sym"getAngle")().returning(Pi / 4)
+      mockTurtle.expects(sym"turn")(~(-Pi / 4))
+      mockTurtle.expects(sym"penDown")()
+      mockTurtle.expects(sym"forward")(1.0)
     }
  
     controller.drawLine((1.0, 1.0), (2.0, 1.0))

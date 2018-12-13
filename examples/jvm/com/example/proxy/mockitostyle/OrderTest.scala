@@ -34,20 +34,20 @@ class OrderTest extends WordSpec with MockFactory {
       "remove inventory" in {
         val mockWarehouse = stub[Warehouse]
         
-        mockWarehouse.when('hasInventory)("Talisker", 50).returns(true)
+        mockWarehouse.when(sym"hasInventory")("Talisker", 50).returns(true)
         
         val order = new Order("Talisker", 50)
         order.fill(mockWarehouse)
         
         assert(order.isFilled)
-        mockWarehouse.verify('remove)("Talisker", 50).once
+        mockWarehouse.verify(sym"remove")("Talisker", 50).once
       }
     }
     
     "out of stock" should {
       "remove nothing" in {
         val mockWarehouse = stub[Warehouse]
-        mockWarehouse.when('hasInventory)(*, *).returns(false)
+        mockWarehouse.when(sym"hasInventory")(*, *).returns(false)
         
         val order = new Order("Talisker", 50)
         order.fill(mockWarehouse)

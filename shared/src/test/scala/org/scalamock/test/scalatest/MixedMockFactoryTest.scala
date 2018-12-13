@@ -11,7 +11,7 @@ class MixedMockFactoryTest extends FlatSpec with MixedMockFactory with Matchers 
     val m = mock[Foo]
     val p = Proxy.mock[Foo]
 
-    p.expects('getI)().returning(5).once()
+    p.expects(sym"getI")().returning(5).once()
     m.getI _ expects() returning 42 once()
 
     m.getI should be(42)
